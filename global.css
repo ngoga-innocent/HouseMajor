@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply px-[4vw] py-[1vh] border border-[#7A7575] text-center rounded-full;
+  }
+  .rounded-btn{
+    @apply rounded-full border border-[#7A7575] flex flex-col items-center justify-center
+  }
+
+  .line{
+    @apply flex-1 h-[1px] bg-[#7A7575]
+  }
+  .text{
+    @apply text-border 
+  }
+  .text-subheading {
+    @apply text-base text-gray-500;
+  }
+  .row{
+    @apply flex flex-row items-center justify-between
+  }
+}
