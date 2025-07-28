@@ -1,24 +1,9 @@
 import { width } from "@/components/global";
+import { HouseFeatureAssignment } from "@/redux/Slice/houseSlice";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
 export default function Features({ features }: any) {
-  interface Feature {
-    id: string;
-    name: string;
-    icon: string;
-    add_available_number: boolean;
-    is_additional_image_required: boolean;
-    show_available_number: boolean;
-    show_icon_only: boolean;
-    show_name_only: boolean;
-  }
-
-  interface HouseFeatureAssignment {
-    id: string;
-    available_number: string | null;
-    images: string[];
-    feature: Feature;
-  }
+  
 
   return (
     <View
