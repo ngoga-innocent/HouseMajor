@@ -15,7 +15,7 @@ export default function Index() {
   useEffect(() => {
     if (fontsLoaded) {
       setTimeout(() => {
-        router.replace("/Auths"); // Navigate to /home or any screen
+        router.replace("/auths"); // Navigate to /home or any screen
       }, 2000); // delay for visual feedback if needed
     }
   }, [fontsLoaded]);

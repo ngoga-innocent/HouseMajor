@@ -22,4 +22,7 @@
   .row{
     @apply flex flex-row items-center justify-between
   }
+  .center{
+    @apply flex flex-col items-center justify-center
+  }
 }

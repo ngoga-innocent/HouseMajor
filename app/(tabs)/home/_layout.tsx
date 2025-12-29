@@ -11,6 +11,12 @@ export default function HomeLayout() {
                 <Stack.Screen name='index' options={{
                     headerShown: false
                 }} />
+                <Stack.Screen name='filter' options={{
+                    headerShown: false
+                }} />
+                <Stack.Screen name='addhouse' options={{
+                    headerShown: false
+                }} />
                 {/* <Stack.Screen
                     name="[id]"
                     options={{ headerShown:false }}

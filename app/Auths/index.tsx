@@ -60,7 +60,12 @@ export default function Index() {
           return (
             <TouchableOpacity onPress={()=>{
                 setActiveLogin(index)
-                router.replace("/(tabs)/home")
+                if(index==1){
+                  router.navigate("/auths/signup")
+                }else{
+                  router.replace("/auths/signup")
+                }
+                
             }} 
               key={index}
             //   href={button?.href}
@@ -96,6 +101,9 @@ export default function Index() {
           );
         })}
       </View>
+      <TouchableOpacity onPress={()=>router.navigate("/(tabs)/home")}  className="self-center w-[50vw] bg-black rounded-full py-2 flex flex-col items-center justify-center">
+        <Text className="text-white font-bold text-lg">Skip</Text>
+      </TouchableOpacity>
     </View>
   );
 }

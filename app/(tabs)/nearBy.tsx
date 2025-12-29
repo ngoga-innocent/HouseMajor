@@ -21,7 +21,7 @@ import MapView, { Marker } from "react-native-maps";
 
 export default function NearBy() {
   const { data: houses, isLoading } = useGetHousesQuery();
-  const router=useRouter()
+  const router = useRouter();
   const [userLocation, setUserLocation] = useState<{
     latitude: number;
     longitude: number;
@@ -64,12 +64,11 @@ export default function NearBy() {
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return R * c;
   }
-  const defaultLat = parseFloat(houses[0]?.latitude || "-1.9501");
-  const defaultLng = parseFloat(houses[0]?.longitude || "30.0588");
-  
+  const defaultLat = parseFloat(houses[0]?.latitude ?? "-1.9501");
+  const defaultLng = parseFloat(houses[0]?.longitude ?? "30.0588");
 
   // Nearest House to the user function
-  const nearestHouses:house[] =
+  const nearestHouses: house[] =
     userLocation &&
     houses
       ?.filter((house: any) => house.latitude && house.longitude) // only valid coords
@@ -110,7 +109,7 @@ export default function NearBy() {
           shadowColor: "#000",
           shadowOffset: { height: 10, width: 10 },
           shadowRadius: 10,
-          elevation:10
+          elevation: 10,
         }}
         className=" mx-3 bg-white rounded-2xl p-2 flex w-[80vw] flex-row gap-x-2"
       >
@@ -139,7 +138,10 @@ export default function NearBy() {
             data={nearestHouse?.feature_assignments}
             renderItem={renderNearestHouseFeature}
           />
-          <TouchableOpacity onPress={()=>router?.push(`/(tabs)/home/${nearestHouse?.id}`)} className="bg-black rounded-full self-start px-3 py-2">
+          <TouchableOpacity
+            onPress={() => router?.push(`/(tabs)/home/${nearestHouse?.id}`)}
+            className="bg-black rounded-full self-start px-3 py-2"
+          >
             <Text className="text-white font-bold">View Details</Text>
           </TouchableOpacity>
         </View>
@@ -149,16 +151,40 @@ export default function NearBy() {
   // console.log("nearest house", nearestHouses);
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={()=>router?.canGoBack()?router.back():router?.navigate("/(tabs)/home")} className="rounded-full p-3 border-border bg-white absolute top-[6vh] left-[2vw] z-50">
-        <ArrowLeft width={smallIconSize.width * 0.5} height={smallIconSize.width  * 0.5} color={color?.border} />
+      <TouchableOpacity
+        onPress={() =>
+          router?.canGoBack() ? router.back() : router?.navigate("/(tabs)/home")
+        }
+        className="rounded-full p-3 border-border bg-white absolute top-[6vh] left-[2vw] z-50"
+      >
+        <ArrowLeft
+          width={smallIconSize.width * 0.5}
+          height={smallIconSize.width * 0.5}
+          color={color?.border}
+        />
       </TouchableOpacity>
       <MapView
+        // provider={PROVIDER_GOOGLE}
         initialRegion={{
-          latitude: defaultLat, // Example: Kigali
-          longitude: defaultLng,
+          latitude: !isNaN(parseFloat(houses?.[0]?.latitude))
+            ? parseFloat(houses[0].latitude)
+            : -1.9501, // Kigali
+          longitude: !isNaN(parseFloat(houses?.[0]?.longitude))
+            ? parseFloat(houses[0].longitude)
+            : 30.0588, // Kigali
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }}
+        // initialRegion={{
+        //   latitude: -1.9501,
+        //   longitude: 30.0588,
+        //   latitudeDelta: 0.01,
+        //   longitudeDelta: 0.01,
+        // }}
+        loadingEnabled
+        liteMode
+        loadingBackgroundColor="rgba(0,0,0,0.2)"
+        loadingIndicatorColor={color.loading}
         style={styles.map}
       >
         {houses?.map((house: house, index: number) => {
@@ -180,7 +206,7 @@ export default function NearBy() {
       </MapView>
       <View className="absolute bottom-8 h-[23vh]">
         <FlatList
-        showsHorizontalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
           horizontal
           data={nearestHouses}
           renderItem={renderNearestHouse}
@@ -197,5 +223,7 @@ const styles = StyleSheet.create({
   },
   map: {
     flex: 1,
+    width: "100%",
+    height: "100%",
   },
 });

@@ -9,14 +9,23 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "googleMapsApiKey": "AIzaSyBnxSE3CaIuGZTuSZJSg_7r5UWgtZAlS2k"
+      }
     },
     "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBnxSE3CaIuGZTuSZJSg_7r5UWgtZAlS2k"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.ngoga.HouseMajor"
     },
     "web": {
       "bundler": "metro",
@@ -38,6 +47,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "7d43df82-5711-4ae4-8dcf-6e0b809cf69c"
+      }
     }
   }
 }

@@ -13,7 +13,7 @@ import {
     useGetSingleHouseQuery,
 } from "@/redux/Slice/houseSlice";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { ArrowLeft, ArrowRight, ChevronDown } from "lucide-react-native";
+import { ArrowLeft, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react-native";
 import React, { useState } from "react";
 import {
     ImageBackground,
@@ -160,13 +160,13 @@ export default function SingleHouse() {
                   className="rounded-full bg-border p-2"
                   onPress={() => slideImage("prev")}
                 >
-                  <ArrowLeft color="white" />
+                  <ChevronLeft color="white" />
                 </TouchableOpacity>
                 <TouchableOpacity
                   className="rounded-full bg-border p-2"
                   onPress={() => slideImage("next")}
                 >
-                  <ArrowRight color="white" />
+                  <ChevronRight color="white" />
                 </TouchableOpacity>
               </View>
 

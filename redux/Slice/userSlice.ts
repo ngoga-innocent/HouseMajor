@@ -1,13 +1,32 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-const userSlice = createSlice({
-  name: "user",
-  initialState: { loggedIn: false },
-  reducers: {
-    login: state => { state.loggedIn = true },
-    logout: state => { state.loggedIn = false },
-  },
+import { url } from "@/url";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+export const authapi = createApi({
+  reducerPath: "AuthApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: `${url}/api/auth`,
+  }),
+  endpoints: (builder) => ({
+    registerUser: builder.mutation({
+      query: (userData) => ({
+        url: "register/",
+        method: "POST",
+        body: userData,
+      }),
+    }),
+    loginUsers:builder.mutation({
+      query:(userData)=>({
+        url:"login/",
+        method:"POST",
+        body:userData
+      })
+    }),
+    forgotPassword:builder.mutation({
+      query:(email)=>({
+        url:"forgot-password/",
+        method:"POST",
+        body:email
+      })
+    })
+  }),
 });
-
-export const { login, logout } = userSlice.actions;
-export default userSlice.reducer;
+export const { useRegisterUserMutation,useLoginUsersMutation,useForgotPasswordMutation } = authapi;

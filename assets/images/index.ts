@@ -1,8 +1,23 @@
 import AppleIcon from './Apple.svg';
+import AuthHeader from './auth_header.svg';
+import Camera from './Camera.svg';
 import Check from "./check.svg";
+import Daihatsu from "./Daihatsu.svg";
+import Pdf from './Document.svg';
+import FaceBookIcon from './Facebook.svg';
+import GoogleIcon from './Google.svg';
 import HouseMarker from './House.svg';
 import Logo from "./icon.svg";
+import Liphan from './Liphan.svg';
+import MailIcon from './mail.svg';
 import Message from "./message.svg";
+import MotoBike from "./MotorBike.svg";
+import PasswordIcon from './password.svg';
 import Call from "./Phone.svg";
-export { AppleIcon, Call, Check, HouseMarker, Logo, Message };
+import Phone1 from "./phone1.svg";
+import Profile from "./Profile.svg";
+import ProfilePlaceholder from './ProfileIcon.svg';
+import Tax from "./Tax.svg";
+import TruckIcon from "./Truck.svg";
+export { AppleIcon, AuthHeader, Call, Camera, Check, Daihatsu, FaceBookIcon, GoogleIcon, HouseMarker, Liphan, Logo, MailIcon, Message, MotoBike, PasswordIcon, Pdf, Phone1, Profile, ProfilePlaceholder, Tax, TruckIcon };
 
